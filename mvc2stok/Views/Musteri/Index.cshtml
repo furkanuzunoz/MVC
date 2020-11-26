@@ -1,0 +1,39 @@
+﻿@using mvc2stok.Models.Entity
+@model List<tblmusteri>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+@using (Html.BeginForm("Index", "Musteri", FormMethod.Get))
+{
+<p>
+    <b>Aranacak kelimeyi giriniz: </b> @Html.TextBox("p")
+    <input type="submit" value="ara" />
+</p>
+}
+<table class="table table-bordered">
+    <tr>
+        <th>Müşteri İD </th>
+        <th>Müşteri AD </th>
+        <th>Müşteri SOYAD </th>
+        <th>Sil</th>
+        <th>Guncelle</th>
+        <th>Alert</th>
+    </tr>
+    <tbody>
+        @foreach(var sgt in Model)
+        {
+        <tr>
+            <td>@sgt.musteriid</td>
+            <td>@sgt.musteriad</td>
+            <td>@sgt.musterisoyad</td>
+            <td><a href="/Musteri/Sil/@sgt.musteriid" class="btn btn-danger">Sil</a> </td>
+            <td><a href="/Musteri/musterigetir/@sgt.musteriid" class="btn btn-success">Guncelle</a> </td>
+            <td>@Html.ActionLink("Sil Button","Sil",new {id=sgt.musteriid },new { @class = "btn btn-warning",onclick="return confirm('Gerçekten silmek istiyormusunuz ?')"  }) </td>
+        </tr>
+
+        }
+    </tbody>
+
+</table>
+<a href="/Musteri/Musteriekle/" class="btn btn-primary">Ekle</a>

@@ -1,0 +1,66 @@
+﻿@using mvc2stok.Models.Entity
+@model PagedList.IPagedList<tblurunler>
+@using PagedList 
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "urunler";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<table class="table table-bordered">
+    <tr>
+        <th>
+            Urun id
+        </th>
+        <th>
+            Urun ad
+        </th>
+        <th>
+            Urun marka
+        </th>
+        <th>
+            Urun kategori
+        </th>
+        <th>
+            Urun fiyat
+        </th>
+        <th>
+            Urun stok
+        </th>
+        <th>Sil</th>
+        <th>Guncelle</th>
+    </tr>
+    <tbody>
+        @foreach (var degerler in Model)
+        {
+            <tr>
+                <td>
+                    @degerler.Urunid
+                </td>
+                <td>
+                    @degerler.urunad
+                </td>
+                <td>
+                    @degerler.Urunmarka
+                </td>
+                <td>
+                    @degerler.tblkategori.kategoriad
+                </td>
+                <td>
+                    @degerler.urunfiyat
+                </td>
+                <td>
+                    @degerler.stok
+                </td>
+                <td><a href="/Urunler/Sil/@degerler.Urunid" class="btn btn-danger">Sil</a> </td>
+                <td><a href="/Urunler/Guncelle/@degerler.Urunid"class="btn btn-success">Guncelle</a></td>
+
+
+            </tr>
+
+        }
+    </tbody>
+</table>
+@Html.PagedListPager((IPagedList)Model,sayfa=>Url.Action("index", new { sayfa })) 
+<a href="/Urunler/Urunekle/" class="btn btn-primary">Eke</a>
+

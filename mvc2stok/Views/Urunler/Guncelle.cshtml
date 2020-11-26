@@ -1,0 +1,33 @@
+﻿@model mvc2stok.Models.Entity.tblurunler
+@{
+    ViewBag.Title = "Guncelle";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+@using (
+@Html.BeginForm("Guncellee", "Urunler", FormMethod.Post)){ 
+<div>
+    @Html.LabelFor(m => m.Urunid)
+    @Html.TextBoxFor(m => m.Urunid, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.urunad)
+    @Html.TextBoxFor(m => m.urunad, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.Urunmarka)
+    @Html.TextBoxFor(m => m.Urunmarka, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.urunkategori)
+    @Html.TextBoxFor(m => m.urunkategori, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.urunfiyat)
+    @Html.TextBoxFor(m => m.urunfiyat, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.stok)
+    @Html.TextBoxFor(m => m.stok, new { @class = "form-control" })
+    <br />
+
+</div>
+
+<div>
+    <button class="btn btn-success">Ürün Güncelle</button>
+</div>
+}

@@ -1,0 +1,36 @@
+﻿@model mvc2stok.Models.Entity.tblkategori
+@{
+    ViewBag.Title = "Urunekle";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<form class="form-group" method="post">
+    <div style="width:300px ; height:auto;margin-left:380px; background-color:lightblue;">
+        <div>
+            <label>Ürün ad </label>
+            <input class="form-control" type="text" name="urunad" required="" maxlength="10" />
+            <label>Ürün marka </label>
+            <input class="form-control" type="text" name="Urunmarka" required="" />
+            <label>Ürün kategori </label>
+            @Html.DropDownListFor(m => m.kategoriid,(List<SelectListItem>)ViewBag.dgr,new { @class="form-control"})
+            <label>Ürün fiyat </label>
+            <input class="form-control" type="text" name="urunfiyat" />
+            <label>Ürün stok </label>
+            <input class="form-control" type="text" name="stok" />
+
+        </div>
+
+    </div>
+    <div style="width:300px ; height:auto;margin-left:380px; margin-top:30px;">
+        <button class="btn btn-info" id="buton1">Ekle</button>
+    </div>
+    <script style="text-emphasis-color:lightblue;">
+        $('#buton1').click(function () {
+
+            alert("ürün ekleme işlemi başarıyla gerçekleştirildi...!");
+        });
+    </script>
+
+
+
+</form>
+
